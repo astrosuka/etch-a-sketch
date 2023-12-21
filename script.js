@@ -4,7 +4,8 @@ let gridSize = 16;
 
 resizeButton.addEventListener('click', () => {
     gridSize = prompt('set grid size [max 100]');
-    if (gridSize > 100){
+    console.log(gridSize);
+    if (gridSize > 100 || gridSize <= 0 || isNaN(gridSize)){
         alert('ERROR!')
     } else {
         drawGrid(gridSize);
@@ -14,7 +15,7 @@ resizeButton.addEventListener('click', () => {
 
 function drawGrid(gridSize){
     container.textContent = '';
-    let contSize = 800;
+    let contSize = 400;
     let itemSize = contSize / gridSize; 
     container.style.width = `${contSize}px`;
     container.style.height = `${contSize}px`;
