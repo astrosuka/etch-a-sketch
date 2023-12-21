@@ -2,16 +2,23 @@ const container = document.querySelector('#container');
 const resizeButton = document.querySelector('#resize-button')
 let gridSize = 16;
 
-// resizeButton.addEventListener('click', () => {
-//     gridSize = prompt('set grid size');
-//     drawGrid(gridSize);
-// })
+resizeButton.addEventListener('click', () => {
+    gridSize = prompt('set grid size');
+    drawGrid(gridSize);
+})
 
 
 function drawGrid(gridSize){
+    container.textContent = '';
+    let contSize = 800;
+    let itemSize = contSize / gridSize; 
+    container.style.width = `${contSize}px`;
+    container.style.height = `${contSize}px`;
+
     for (let i = 0; i < (gridSize * gridSize); i++) {
         let div = document.createElement('div');
-        // div.textContent = i;
+        div.style.width = `${itemSize - 2}px`;
+        div.style.height = `${itemSize - 2}px`;
         div.classList.add('item');
         container.appendChild(div);
         div.addEventListener('mouseover', () => {
