@@ -3,8 +3,12 @@ const resizeButton = document.querySelector('#resize-button')
 let gridSize = 16;
 
 resizeButton.addEventListener('click', () => {
-    gridSize = prompt('set grid size');
-    drawGrid(gridSize);
+    gridSize = prompt('set grid size [max 100]');
+    if (gridSize > 100){
+        alert('ERROR!')
+    } else {
+        drawGrid(gridSize);
+    }
 })
 
 
