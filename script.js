@@ -3,15 +3,19 @@ const resizeButton = document.querySelector('#resize-button')
 let gridSize = 16;
 
 resizeButton.addEventListener('click', () => {
-    gridSize = prompt('set grid size [max 100]');
-    console.log(gridSize);
-    if (gridSize > 100 || gridSize <= 0 || isNaN(gridSize)){
-        alert('ERROR!')
-    } else {
+    input = prompt('set grid size [max 100]');
+    console.log(input);
+    if (input === null){
+        drawGrid(gridSize);
+    } else
+    if (input > 100 || input <= 0 || isNaN(input)){
+        alert('Please enter a number between 1 and 100')
+    } 
+    else {
+        gridSize = input;
         drawGrid(gridSize);
     }
 })
-
 
 function drawGrid(gridSize){
     container.textContent = '';
