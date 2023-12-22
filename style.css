@@ -27,4 +27,5 @@ body {
 .item {
     background-color: ghostwhite;
     border: white solid 1px; 
+    user-select: none;
 }

@@ -1,6 +1,8 @@
 const container = document.querySelector('#container');
 const resizeButton = document.querySelector('#resize-button')
 let gridSize = 16;
+window.addEventListener("contextmenu", e => e.preventDefault());
+
 
 resizeButton.addEventListener('click', () => {
     input = prompt('set grid size [max 100]');
@@ -30,11 +32,15 @@ function drawGrid(gridSize){
         div.style.height = `${itemSize}px`;
         div.classList.add('item');
         container.appendChild(div);
-        div.addEventListener('mouseover', () => {
-            div.style.backgroundColor = 'black';
+        div.addEventListener('mouseover', (e) => {
+            if (e.buttons === 1){
+                e.target.style.backgroundColor = 'black';
+            } 
+            if (e.buttons === 2){
+                e.target.style.backgroundColor = 'ghostwhite';
+            } 
         })
     };
-    
 }
 
 drawGrid(gridSize);
