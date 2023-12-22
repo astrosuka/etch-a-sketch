@@ -22,8 +22,8 @@ function drawGrid(gridSize){
 
     for (let i = 0; i < (gridSize * gridSize); i++) {
         let div = document.createElement('div');
-        div.style.width = `${itemSize - 2}px`;
-        div.style.height = `${itemSize - 2}px`;
+        div.style.width = `${itemSize}px`;
+        div.style.height = `${itemSize}px`;
         div.classList.add('item');
         container.appendChild(div);
         div.addEventListener('mouseover', () => {
