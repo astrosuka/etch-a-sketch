@@ -1,7 +1,11 @@
 const container = document.querySelector('#container');
-const resizeButton = document.querySelector('#resize-button')
+const resizeButton = document.querySelector('#resize-button');
+const colorButton = document.querySelector('#color-button');
+const clearButton = document.querySelector('#clear-button');
 let gridSize = 16;
+let colorSwitch = 0;
 window.addEventListener("contextmenu", e => e.preventDefault());
+
 
 
 resizeButton.addEventListener('click', () => {
@@ -19,6 +23,20 @@ resizeButton.addEventListener('click', () => {
     }
 })
 
+colorButton.addEventListener('click', () => {
+    if (colorSwitch === 0){
+        colorSwitch = 1;
+        colorButton.style.color = getRandomColor();
+    } else {
+        colorSwitch = 0;
+        colorButton.style.color = 'black';
+    }
+})
+
+clearButton.addEventListener('click', () => {
+    drawGrid(gridSize);
+})
+
 function drawGrid(gridSize){
     container.textContent = '';
     let contSize = 400;
@@ -34,13 +52,21 @@ function drawGrid(gridSize){
         container.appendChild(div);
         div.addEventListener('mouseover', (e) => {
             if (e.buttons === 1){
-                e.target.style.backgroundColor = 'black';
+                e.target.style.backgroundColor = colorSwitch ? getRandomColor() : 'black';
             } 
             if (e.buttons === 2){
                 e.target.style.backgroundColor = 'ghostwhite';
             } 
         })
     };
+}
+
+function getRandomColor(){
+    let randR = Math.floor(Math.random()*255);
+    let randG = Math.floor(Math.random()*255);
+    let randB = Math.floor(Math.random()*255);
+    return `RGB(${randR},${randG},${randB})`
+
 }
 
 drawGrid(gridSize);
